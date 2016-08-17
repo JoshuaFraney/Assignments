@@ -5,17 +5,19 @@ public class simpleCraps3 {
 		   public static void main(String[] args) {
 			   
 		      int dice;  // Initial roll
-		      dice = (int)(6.0*Math.random() + 1.0) +
-		             (int)(6.0*Math.random() + 1.0);
-		      
+		      		      
 		      int loss = 0;
 		      int win = 0;
 		      
 		      boolean gameover = false;
 		      int point = 0;
-		      
-		      for (int i = 0;  i<135; i++) {
-		      
+		         
+		         
+		      for (int i = 0;  i<135; i = win + loss) {
+		    	  
+		    	  dice = (int)(6.0*Math.random() + 1.0) +
+				             (int)(6.0*Math.random() + 1.0);
+				      
 		      if (dice == 2 || dice == 3 || dice == 12) {
 		    	 loss++; 
 		    	 gameover = true;
@@ -50,19 +52,19 @@ public class simpleCraps3 {
 		               gameover = true;
 		               System.out.println("\nYou rolled a 7 and lost :( Better luck next time..");
 		               break; // Lose the game, Game Over
-		                
+		             
 		            }
-		            
+		           
 		            else System.out.println("You rolled a number other than the Point Number or a 7, continue rolling.."); // Statement for continuing the game
-		            gameover = false;
+		            
 		         }
 		         
-		         System.out.println("Wins: " + win + "\n");
-		         System.out.println("Losses: " + loss + "\n");
-
+		         
 		      }
 		   }
-	      
+		      
+		      System.out.println("Wins: " + win + "\n");
+		      System.out.println("Losses: " + loss + "\n");
 		   }   
 	      
 	}
