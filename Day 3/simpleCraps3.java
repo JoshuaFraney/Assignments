@@ -13,8 +13,8 @@ public class simpleCraps3 {
 		      int point = 0;
 		         
 		         
-		     for (int i = 0;  i<135; i = win + loss) {
-		    	  
+		     for (int i = 0;  i<110; i = win + loss) {
+	               System.out.println("----------------------------------");
 		    	  dice = (int)(6.0*Math.random() + 1.0) +
 				             (int)(6.0*Math.random() + 1.0);
 				      
@@ -47,6 +47,8 @@ public class simpleCraps3 {
 		               gameover = true;
 		               System.out.println("\nYou Win!! Congratulations!!");
 		                // Win the game, Game Over
+		               System.out.println();
+
 		            }
 		            
 		            if (dice == 7) {
@@ -54,13 +56,15 @@ public class simpleCraps3 {
 		               gameover = true;
 		               System.out.println("\nYou rolled a 7 and lost :( Better luck next time..");
 		                // Lose the game, Game Over
+		               System.out.println();
+
 		             
 		            }
 		            
 		            if (dice != 7 && dice != pointNumber) {
 		            	System.out.println("You rolled a number other than 7 or the Point Number, please continue rolling.."); // Statement for continuing the game
-		            	point = 0;
-		            	break;
+		            	System.out.println();
+
 		            }
 		            
 		         }
