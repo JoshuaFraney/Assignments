@@ -1,0 +1,24 @@
+.orangetext {
+	color:orange;
+}
+.italictext {
+	font-style: italic;
+}
+span {
+	color:red;
+	font-weight:bold;
+}
+table, td, tr {
+	border:1px solid grey;
+}
+
+div {
+	width:49%;
+	display:inline-block;
+	text-align: center;
+	vertical-align: text-top;
+}
+/* this is for an ID */
+#rightdiv {
+	color:black;	
+}

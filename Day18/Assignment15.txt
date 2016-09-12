@@ -247,21 +247,126 @@ mysql> select * from major_class_relationship;
 31 rows in set (0.00 sec)
 
 
-Unsuccessful Pro Challenge Attempt:
-(I could get the class the student is enrolled in printed 4 times instead of the 4 classes remaining for the major) :(
+Pro Challenge Attempt:
 
-mysql> select concat(student.last_name,', ', student.first_name) as 'Student Nam
-e', concat(class.class_name, class.class_nbr) as 'Classes Remaining' from studen
-t, class, student_class_relationship, major_class_relationship where student.id
-= student_class_relationship.student_id and major_class_relationship.class_id =
-class.id and student_class_relationship.class_id = class.id and student.id = 100
-;
+mysql> select concat(student.last_name, ', ', student.first_name) as 'Student Na
+me', mc.class_id as 'Classes Remaining' from student, major_class_relationship m
+c where student.id = 100 and mc.class_id not in(select sc.class_id from student_
+class_relationship sc where student_id = 100)and mc.major_id = (select distinct
+major_id from student where student.id = 100);
+
 +--------------+-------------------+
 | Student Name | Classes Remaining |
 +--------------+-------------------+
-| Ephram, Eric | English101        |
-| Ephram, Eric | English101        |
-| Ephram, Eric | English101        |
-| Ephram, Eric | English101        |
+| Ephram, Eric |                 2 |
+| Ephram, Eric |                 3 |
+| Ephram, Eric |                10 |
+| Ephram, Eric |                18 |
 +--------------+-------------------+
-4 rows in set (0.00 sec)
+
+mysql> select c.id from student s join student_class_relationship sc on s.id = s
+c.student_id join class c on c.id = sc.class_id;
++----+
+| id |
++----+
+|  1 |
+| 11 |
+|  8 |
+| 27 |
+| 32 |
+| 10 |
+| 19 |
+| 23 |
+|  4 |
+| 27 |
+| 29 |
+| 14 |
+| 23 |
++----+
+13 rows in set (0.00 sec)
+
+mysql> select concat(s.first_name, ' ',s.last_name) as 'Student Name', concat(c.
+class_name,' ',c.class_nbr) from student s join major m on s.major_id = m.id joi
+n major_class_relationship mc on m.id = mc.major_id join class c on c.id = mc.cl
+ass_id;
++------------------+--------------------------------------+
+| Student Name     | concat(c.class_name,' ',c.class_nbr) |
++------------------+--------------------------------------+
+| Eric Ephram      | English 101                          |
+| Eric Ephram      | English 102                          |
+| Eric Ephram      | English 103                          |
+| Eric Ephram      | Math 201                             |
+| Eric Ephram      | History 101                          |
+| Kevin Kraft      | English 101                          |
+| Kevin Kraft      | English 102                          |
+| Kevin Kraft      | English 103                          |
+| Kevin Kraft      | Math 201                             |
+| Kevin Kraft      | History 101                          |
+| Adam Ant         | Math 201                             |
+| Adam Ant         | Math 202                             |
+| Adam Ant         | English 101                          |
+| Adam Ant         | Math 203                             |
+| Adam Ant         | Computer Science 312                 |
+| Howard Hess      | Math 201                             |
+| Howard Hess      | Math 202                             |
+| Charles Caldwell | Math 204                             |
+| Charles Caldwell | Math 301                             |
+| Charles Caldwell | Math 302                             |
+| Charles Caldwell | Math 303                             |
+| Charles Caldwell | Computer Science 313                 |
+| Frank Fountain   | Math 204                             |
+| Frank Fountain   | Math 301                             |
+| Frank Fountain   | Math 302                             |
+| Frank Fountain   | Math 303                             |
+| Frank Fountain   | Computer Science 313                 |
+| Greg Gould       | Math 202                             |
+| Greg Gould       | English 202                          |
+| Greg Gould       | Computer Science 312                 |
+| Brian Biggs      | Math 202                             |
+| Brian Biggs      | English 202                          |
+| Brian Biggs      | Computer Science 312                 |
+| James Joyce      | English 101                          |
+| James Joyce      | Math 201                             |
+| James Joyce      | Education 221                        |
+| James Joyce      | Education 222                        |
+| James Joyce      | Education 223                        |
+| James Joyce      | Education 353                        |
+| Doug Dumas       | English 101                          |
+| Doug Dumas       | Math 201                             |
+| Doug Dumas       | History 101                          |
+| Doug Dumas       | Education 221                        |
+| Doug Dumas       | Psychology 101                       |
++------------------+--------------------------------------+
+44 rows in set (0.00 sec)
+
+mysql> select concat(s.first_name, ' ',s.last_name) as 'Student Name', concat(c.
+class_name,' ',c.class_nbr) from student s join major m on s.major_id = m.id joi
+n major_class_relationship mc on m.id = mc.major_id join class c on c.id = mc.cl
+ass_id where c.id not in (select c.id from student s join student_class_relation
+ship sc on s.id = sc.student_id join class c on c.id = sc.class_id);
++------------------+--------------------------------------+
+| Student Name     | concat(c.class_name,' ',c.class_nbr) |
++------------------+--------------------------------------+
+| Eric Ephram      | English 102                          |
+| Eric Ephram      | English 103                          |
+| Eric Ephram      | History 101                          |
+| Kevin Kraft      | English 102                          |
+| Kevin Kraft      | English 103                          |
+| Kevin Kraft      | History 101                          |
+| Adam Ant         | Math 203                             |
+| Adam Ant         | Computer Science 312                 |
+| Charles Caldwell | Math 204                             |
+| Charles Caldwell | Math 302                             |
+| Charles Caldwell | Math 303                             |
+| Frank Fountain   | Math 204                             |
+| Frank Fountain   | Math 302                             |
+| Frank Fountain   | Math 303                             |
+| Greg Gould       | English 202                          |
+| Greg Gould       | Computer Science 312                 |
+| Brian Biggs      | English 202                          |
+| Brian Biggs      | Computer Science 312                 |
+| James Joyce      | Education 222                        |
+| Doug Dumas       | History 101                          |
+| Doug Dumas       | Psychology 101                       |
++------------------+--------------------------------------+
+21 rows in set (0.00 sec)
