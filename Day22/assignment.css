@@ -1,0 +1,49 @@
+.redtext {
+	color:red;
+}
+.boldtext {
+	font-weight:bold;
+}
+.italictext {
+	font-style:italic;
+}
+span {
+	color:green;
+	font-weight:bold;
+}
+table, td, tr, th {
+	border:1px solid grey;
+}
+h1, h3 {
+	text-align:center;
+}
+div {
+	width:49%;
+	display:inline-block;
+	text-align: left;
+	vertical-align: text-top;
+}
+.footer { 
+    display: inline-block;
+    text-align: center;
+}
+img {
+	width:100px;
+	height:100px;
+}
+#rightdiv {
+	font-size:18px;
+	border: 2px solid red;
+}
+#leftdiv {
+	font-size:18px;
+	border: 2px solid red;
+}
+.center-block {
+  color: silver;
+  background-color: black;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
