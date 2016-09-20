@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 
@@ -12,7 +13,7 @@ class Mainline {
 	
 	public static db db = null;
 
-	void runEnrollment() throws FileNotFoundException, IOException, SQLException {
+	static void runEnrollment() throws FileNotFoundException, IOException, SQLException {
 	try {
 		enrollmentProcess.makeConnection();
 		
@@ -56,10 +57,16 @@ public class enrollmentProcess {
 
 	public static Connection myConn = null;
 	public static PreparedStatement myStmt = null;
+	public static Statement myStmt3 = null;
 	public static  ResultSet myRs = null;
+	
 	public PreparedStatement pstmt = null;
+	static int sect;
+	static String subj;
 	static int minimumSat;
 	static int studentSat;
+	static String major = null;
+	static String reqSat = null;
 	static db db = null;
 	int id = -1;
 	String firstName = null;
@@ -69,17 +76,45 @@ public class enrollmentProcess {
 	String majorRequested = null;
 	int majorId = -1;
 	
-	public static void main(String[] args) throws SQLException {
-//		enrollStudent(200,"Adam","Zapel",1200,3.0);
-//		enrollStudent(210,"Graham","Krakir",500,2.5);
-//		enrollStudent(220,"Ella","Vader",800,3.0);
-//		enrollStudent(230,"Stanley","Kupp",1350,3.3);
-//		enrollStudent(240,"Lou","Zarr",950,3.0);
-		
+	public static void main(String[] args) throws SQLException, FileNotFoundException, IOException {
+//		Student.enrollStudent(200,"Adam","Zapel",1200,3.0);
+//		Student.enrollStudent(210,"Graham","Krakir",500,2.5);
+//		Student.enrollStudent(220,"Ella","Vader",800,3.0);
+//		Student.enrollStudent(230,"Stanley","Kupp",1350,3.3);
+//		Student.enrollStudent(240,"Lou","Zarr",950,3.0);
+		//Student.newClass(100, 50101);
+		//Student.newClass(100, 60221);
+//		Student.newClass(200, 10103);
+//		Student.newClass(200, 20201);
+//		Student.newClass(200, 40312);
+//		Student.newClass(200, 30202);
+//		
+//		Student.newClass(210, 10102);
+//		Student.newClass(210, 50231);
+//		Student.newClass(210, 40311);
+//		Student.newClass(210, 50101);
+//
+//		Student.newClass(220, 10101);
+//		Student.newClass(220, 10203);
+//		Student.newClass(220, 60351);
+//		Student.newClass(220, 50102);
+//
+//		Student.newClass(230, 20401);
+//		Student.newClass(230, 10203);
+//		Student.newClass(230, 30202);
+//		Student.newClass(230, 50231);
+//
+//		Student.newClass(240, 50102);
+//		Student.newClass(240, 60351);
+//		Student.newClass(240, 60353);
+//		Student.newClass(240, 40442);
+
+
+		//Mainline.runEnrollment();
 		//getData();
 		//fetchData();
-		//darnData(); 
-		displayData(200,3);
+		dispData(); 
+		//displayData(200,3);
 	}
 public static void display() throws SQLException, FileNotFoundException, IOException {
 
@@ -87,43 +122,84 @@ public static void display() throws SQLException, FileNotFoundException, IOExcep
 		System.out.println("=====================================");
 		System.out.println("");
 		while(myRs.next()) {
-//			String fName = myRs.getString("first_name");
-//			String lName = myRs.getString("last_name");
-//			double gpa = myRs.getDouble("gpa");
-//			int sat = myRs.getInt("sat");
-//			String major = myRs.getString("description");
-//			int reqSat = myRs.getInt("req_sat");
-//			String subj = myRs.getString("subject");
-//			int sect = myRs.getInt("section");
-			String fName = myRs.getString("fName");
-			String lName = myRs.getString("lName");
+			String fName = myRs.getString("first_name");
+			String lName = myRs.getString("last_name");
 			double gpa = myRs.getDouble("gpa");
 			int sat = myRs.getInt("sat");
-			String major = myRs.getString("major");
-			int reqSat = myRs.getInt("reqSat");
-			String subj = myRs.getString("subject");
-			int sect = myRs.getInt("section");
+			String major = myRs.getString("description");
+			int reqSat = myRs.getInt("req_sat");
+			int studentId = myRs.getInt("student.id");
 			
-			System.out.printf("Enrolled %s as a new student. \n", fName, lName);
+//			String fName = myRs.getString("fName");
+//			String lName = myRs.getString("lName");
+//			double gpa = myRs.getDouble("gpa");
+//			int sat = myRs.getInt("sat");
+//			String major = myRs.getString("major");
+//			int reqSat = myRs.getInt("reqSat");
+			
+			
+			int majId = myRs.getInt("major_id");
+			
+			
+			PreparedStatement myStmt4 = myConn.prepareStatement("select * from student_class_relationship where student_id = ?");
+			myStmt4.setInt(1, studentId);
+			ResultSet myRs4 = null;
+			
+			
+			PreparedStatement myStmt2 = myConn.prepareStatement("select * from student_class_relationship join class on student_class_relationship.class_id = class.id "
+					+ "where student_class_relationship.student_id = ?;");
+			myStmt2.setInt(1, studentId);
+			
+		    ResultSet myRs2 = null;
+		    myRs2 = myStmt2.executeQuery();
+			
+			System.out.printf("Enrolled %s %s as a new student. \n", fName, lName);
 			System.out.printf("%s %s has an SAT score of %d \n", fName, lName, sat);
 			System.out.printf("Assigned %s %s to the %s major which requires an SAT score of %d \n", fName, lName, major, reqSat);
 			System.out.printf("Enrolled %s %s in the following four classes: \n", fName, lName);
-		
 			
-			System.out.printf(subj + sect + " required for major.\n");
-			System.out.printf(subj + sect + " required for major.\n");
-			System.out.printf(subj + sect + " elective (not required for major).\n");
-			System.out.printf(subj + sect + " elective (not required for major).\n");
+			
+			myStmt3 = myConn.createStatement();
+		    
+			while(myRs2.next()) {
+				
+				String subj = myRs2.getString("subject");
+				int sect = myRs2.getInt("section");
+				
+				//System.out.println(majId + " " + clsId);
+				int clsId = -1;
+				myRs4 = myStmt4.executeQuery();
+				myRs4.next();	
+				clsId = myRs4.getInt("class_id");
+				
+	            ResultSet myRs3 = myStmt3.executeQuery("select * from major_class_relationship where major_id = '"
+	                       + majId + "' and class_id = '" + clsId + "';");
+			
+				if(myRs3.next()) {
+				System.out.printf(subj +" "+ sect + " required for major.\n");
+				} else {
+	                   System.out.printf(subj +" "+ sect + " elective (not required for major)\n");
+
+				}
+				
+	           }
+			System.out.println("");
+			}
+			
+//			System.out.printf(subj + sect + " required for major.\n");
+//			System.out.printf(subj + sect + " required for major.\n");
+//			System.out.printf(subj + sect + " elective (not required for major).\n");
+//			System.out.printf(subj + sect + " elective (not required for major).\n");
 		
 			// Tip to line up the columns
 			// System.out.println("%-20s", fName + lName)
 	}
-	}
-private static void darnData() throws SQLException {
+	
+private static void dispData() throws SQLException, FileNotFoundException, IOException {
 	try{
 		makeConnection();
-		myStmt= myConn.prepareStatement("select * from student, major, class where student.id = ?");
-		myStmt.setInt(1, 100);
+		myStmt= myConn.prepareStatement("select * from student join major on student.major_id = major.id;");
+		//myStmt.setInt(1, 100);
 		myRs = myStmt.executeQuery();
 		display();
 	}catch(Exception ex) {
@@ -132,26 +208,26 @@ private static void darnData() throws SQLException {
 		close();
 	}
 }
-private static void displayData(int studentId, int majorId) throws SQLException {
-	try{
-		
-		makeConnection();
-		myStmt= myConn.prepareStatement("select a.id as studId, a.first_name as fName, a.last_name as lName, a.sat as sat, a.gpa as gpa, a.major_id"
-				+ " as majorId, b.id as majId, b.description as major, b.req_sat as reqSat, c.id as cId, c.subject as subject, c.section as section,"
-				+ "d.student_id as scrStud, d.class_id as scrClass from student a, major b, class c, student_class_relationship d where a.id = ? "
-				+ "and b.id =? and d.student_id = ? and c.id = d.class_id;");
-		myStmt.setInt(1, studentId);
-		myStmt.setInt(2, majorId);
-		myStmt.setInt(3, studentId);
-
-		myRs = myStmt.executeQuery();
-		display();
-	}catch(Exception ex) {
-		ex.printStackTrace();
-	}finally{
-		close();
-	}
-}
+//private static void displayData(int studentId, int majorId) throws SQLException {
+//	try{
+//		
+//		makeConnection();
+//		myStmt= myConn.prepareStatement("select a.id as studId, a.first_name as fName, a.last_name as lName, a.sat as sat, a.gpa as gpa, a.major_id"
+//				+ " as majorId, b.id as majId, b.description as major, b.req_sat as reqSat, c.id as cId, c.subject as subject, c.section as section,"
+//				+ "d.student_id as scrStud, d.class_id as scrClass from student a, major b, class c, student_class_relationship d where a.id = ? "
+//				+ "and b.id =? and d.student_id = ? and d.student_id = a.id;");
+//		myStmt.setInt(1, studentId);
+//		myStmt.setInt(2, majorId);
+//		myStmt.setInt(3, studentId);
+//
+//		myRs = myStmt.executeQuery();
+//		display();
+//	}catch(Exception ex) {
+//		ex.printStackTrace();
+//	}finally{
+//		close();
+//	}
+//}
 	private static void getData() throws SQLException {
 		try{
 			makeConnection();
@@ -323,6 +399,20 @@ try {
 				close();
 			}
 		}
+		public static void newClass(int student_id, int class_id) throws SQLException, FileNotFoundException, IOException {
+			try {
+				makeConnection();
+				myStmt = myConn.prepareStatement("insert into student_class_relationship (student_id,class_id) values (?,?);");
+				myStmt.setInt(1, student_id);
+				myStmt.setInt(2, class_id);
+				myStmt.executeUpdate();
+				} catch(SQLException ex) {
+					ex.printStackTrace();
+				} finally {
+					close();
+				}
+			}
+		
 		public static boolean assignClass() throws SQLException {
 			try {
 				String sql = "select m.description as 'Major', c.Id as 'classId', "
