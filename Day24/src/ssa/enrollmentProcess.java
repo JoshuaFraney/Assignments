@@ -77,37 +77,37 @@ public class enrollmentProcess {
 	int majorId = -1;
 	
 	public static void main(String[] args) throws SQLException, FileNotFoundException, IOException {
-//		Student.enrollStudent(200,"Adam","Zapel",1200,3.0);
-//		Student.enrollStudent(210,"Graham","Krakir",500,2.5);
-//		Student.enrollStudent(220,"Ella","Vader",800,3.0);
-//		Student.enrollStudent(230,"Stanley","Kupp",1350,3.3);
-//		Student.enrollStudent(240,"Lou","Zarr",950,3.0);
-		//Student.newClass(100, 50101);
-		//Student.newClass(100, 60221);
-//		Student.newClass(200, 10103);
-//		Student.newClass(200, 20201);
-//		Student.newClass(200, 40312);
-//		Student.newClass(200, 30202);
-//		
-//		Student.newClass(210, 10102);
-//		Student.newClass(210, 50231);
-//		Student.newClass(210, 40311);
-//		Student.newClass(210, 50101);
-//
-//		Student.newClass(220, 10101);
-//		Student.newClass(220, 10203);
-//		Student.newClass(220, 60351);
-//		Student.newClass(220, 50102);
-//
-//		Student.newClass(230, 20401);
-//		Student.newClass(230, 10203);
-//		Student.newClass(230, 30202);
-//		Student.newClass(230, 50231);
-//
-//		Student.newClass(240, 50102);
-//		Student.newClass(240, 60351);
-//		Student.newClass(240, 60353);
-//		Student.newClass(240, 40442);
+		Student.enrollStudent(200,"Adam","Zapel",1200,3.0);
+		Student.enrollStudent(210,"Graham","Krakir",500,2.5);
+		Student.enrollStudent(220,"Ella","Vader",800,3.0);
+		Student.enrollStudent(230,"Stanley","Kupp",1350,3.3);
+		Student.enrollStudent(240,"Lou","Zarr",950,3.0);
+		Student.newClass(100, 50101);
+		Student.newClass(100, 60221);
+		Student.newClass(200, 10103);
+		Student.newClass(200, 20201);
+		Student.newClass(200, 40312);
+		Student.newClass(200, 30202);
+		
+		Student.newClass(210, 10102);
+		Student.newClass(210, 50231);
+		Student.newClass(210, 40311);
+		Student.newClass(210, 50101);
+
+		Student.newClass(220, 10101);
+		Student.newClass(220, 10203);
+		Student.newClass(220, 60351);
+		Student.newClass(220, 50102);
+
+		Student.newClass(230, 20401);
+		Student.newClass(230, 10203);
+		Student.newClass(230, 30202);
+		Student.newClass(230, 50231);
+
+		Student.newClass(240, 50102);
+		Student.newClass(240, 60351);
+		Student.newClass(240, 60353);
+		Student.newClass(240, 40442);
 
 
 		//Mainline.runEnrollment();
