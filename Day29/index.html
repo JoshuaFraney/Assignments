@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf=8">
+    <title>Slack API Messenger</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+    <script src="slack.js"></script>
+    <link rel="stylesheet" type="text/css" href="slack.css">
+    <script src="getSlackToken.js"></script>
+
+  </head>
+  <body>
+    <h1>Slack Messenger Using API</h1>
+    <div id="wrapper">
+            <div id="menu">
+                <h2>Channels</h2>
+                  <div id="pblic">
+                  <h3>Public Channels</h3>
+                <p id="public" class = "container"></p>
+              </div>
+                <br>
+                <button id = "toggle" value='Hide/Show' class="toggle">Show/Hide</button>
+                <div id="prvte">
+                <h3>Private Channels</h3>
+                <!-- <button id="toggle"></button> -->
+                <p id="private" class="container"></p>
+              </div>
+              <!-- <div id="myDm">
+                <h3>Direct Message</h3>
+                <p id="myIm" class="container"></p>
+              </div> -->
+            </div>
+
+            <div id="content">
+              <h2 class>Post Message</h2>
+                <textarea id="message-box" type="text" value="type message here"></textarea>
+                <button id = "post" class="post">Post</button>
+            </div>
+
+        </div>
+
+
+
+  </body>
+</html>

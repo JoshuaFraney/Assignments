@@ -1,0 +1,150 @@
+body{
+  font-family: Bree Serif;
+  /*background: rgba(110,110,110,1);*/
+background: rgba(182,230,237,1);
+background: -moz-linear-gradient(left, rgba(182,230,237,1) 0%, rgba(113,227,239,1) 32%, rgba(34,213,226,1) 54%, rgba(182,230,237,1) 100%);
+background: -webkit-gradient(left top, right top, color-stop(0%, rgba(182,230,237,1)), color-stop(32%, rgba(113,227,239,1)), color-stop(54%, rgba(34,213,226,1)), color-stop(100%, rgba(182,230,237,1)));
+background: -webkit-linear-gradient(left, rgba(182,230,237,1) 0%, rgba(113,227,239,1) 32%, rgba(34,213,226,1) 54%, rgba(182,230,237,1) 100%);
+background: -o-linear-gradient(left, rgba(182,230,237,1) 0%, rgba(113,227,239,1) 32%, rgba(34,213,226,1) 54%, rgba(182,230,237,1) 100%);
+background: -ms-linear-gradient(left, rgba(182,230,237,1) 0%, rgba(113,227,239,1) 32%, rgba(34,213,226,1) 54%, rgba(182,230,237,1) 100%);
+background: linear-gradient(to right, rgba(182,230,237,1) 0%, rgba(113,227,239,1) 32%, rgba(34,213,226,1) 54%, rgba(182,230,237,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6e6ed', endColorstr='#b6e6ed', GradientType=1 );
+}
+h1{
+  text-align: center;
+  text-decoration: underline;
+  font-weight: bold;
+  font-size: 28px;
+  background-color: #00BFFF;
+}
+h2{
+  text-align: center;
+  background-color: #87CEEB;
+  text-decoration: underline;
+  font-size: 26px;
+}
+h3{
+  text-decoration: underline;
+  font-size: 24px;
+}
+p{
+  font-size: 22px;
+}
+.initiallyHidden {
+   display: none;
+ }
+#pblic{
+  border-radius: 15px 15px 15px 15px;
+  -moz-border-radius: 15px 15px 15px 15px;
+  -webkit-border-radius: 15px 15px 15px 15px;
+  border: 7px double #16e01d;
+  background-color: #00FF7F;
+}
+.post {
+	-moz-box-shadow:inset 0px -3px 7px 0px #29bbff;
+	-webkit-box-shadow:inset 0px -3px 7px 0px #29bbff;
+	box-shadow:inset 0px -3px 7px 0px #29bbff;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #2dabf9), color-stop(1, #0688fa));
+	background:-moz-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+	background:-webkit-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+	background:-o-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+	background:-ms-linear-gradient(top, #2dabf9 5%, #0688fa 100%);
+	background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#2dabf9', endColorstr='#0688fa',GradientType=0);
+	background-color:#2dabf9;
+	-moz-border-radius:3px;
+	-webkit-border-radius:3px;
+	border-radius:3px;
+	border:1px solid #0b0e07;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Georgia;
+	font-size:15px;
+	padding:8px 18px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #263666;
+}
+.post:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #0688fa), color-stop(1, #2dabf9));
+	background:-moz-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
+	background:-webkit-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
+	background:-o-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
+	background:-ms-linear-gradient(top, #0688fa 5%, #2dabf9 100%);
+	background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#0688fa', endColorstr='#2dabf9',GradientType=0);
+	background-color:#0688fa;
+}
+.post:active {
+	position:relative;
+	top:1px;
+}
+.toggle {
+	-moz-box-shadow:inset 6px -8px 11px 1px #e184f3;
+	-webkit-box-shadow:inset 6px -8px 11px 1px #e184f3;
+	box-shadow:inset 6px -8px 11px 1px #e184f3;
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #c123de), color-stop(1, #a20dbd));
+	background:-moz-linear-gradient(top, #c123de 5%, #a20dbd 100%);
+	background:-webkit-linear-gradient(top, #c123de 5%, #a20dbd 100%);
+	background:-o-linear-gradient(top, #c123de 5%, #a20dbd 100%);
+	background:-ms-linear-gradient(top, #c123de 5%, #a20dbd 100%);
+	background:linear-gradient(to bottom, #c123de 5%, #a20dbd 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c123de', endColorstr='#a20dbd',GradientType=0);
+	background-color:#c123de;
+	-moz-border-radius:6px;
+	-webkit-border-radius:6px;
+	border-radius:6px;
+	border:1px solid #a511c0;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Georgia;
+	font-size:15px;
+	padding:8px 24px;
+	text-decoration:none;
+	text-shadow:4px 5px 2px #9b14b3;
+}
+.toggle:hover {
+	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #a20dbd), color-stop(1, #c123de));
+	background:-moz-linear-gradient(top, #a20dbd 5%, #c123de 100%);
+	background:-webkit-linear-gradient(top, #a20dbd 5%, #c123de 100%);
+	background:-o-linear-gradient(top, #a20dbd 5%, #c123de 100%);
+	background:-ms-linear-gradient(top, #a20dbd 5%, #c123de 100%);
+	background:linear-gradient(to bottom, #a20dbd 5%, #c123de 100%);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a20dbd', endColorstr='#c123de',GradientType=0);
+	background-color:#a20dbd;
+}
+.toggle:active {
+	position:relative;
+	top:1px;
+}
+
+#prvte{
+  border-radius: 15px 15px 15px 15px;
+  -moz-border-radius: 15px 15px 15px 15px;
+  -webkit-border-radius: 15px 15px 15px 15px;
+  border: 7px double #de3e16;
+  background-color: #FF6347;
+}
+#wrapper {
+  margin:auto;
+  width:900px;
+  height:auto;
+  overflow:auto;
+  text-align:left;
+}
+#menu {
+  float:left;
+  width:48%;
+}
+#content {
+  float:right;
+  width:48%;
+}
+#message-box {
+  /*background-image: url("http://vhnalumni.com/Uploadform/background.jpg");*/
+  background-image: url("c://Assignments/Day29/background.jpg");
+   height:175px;
+   width:90%;
+   box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}
