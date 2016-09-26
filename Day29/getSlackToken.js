@@ -1,0 +1,3 @@
+function getSlackToken() {
+  return "xoxp-63743851541-69472081029-82792731585-99138ac8c5e89f924eb491f6b8921b46"
+}
