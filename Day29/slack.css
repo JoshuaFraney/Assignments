@@ -1,14 +1,14 @@
 body{
   font-family: Bree Serif;
   /*background: rgba(110,110,110,1);*/
-background: rgba(182,230,237,1);
+/*background: rgba(182,230,237,1);
 background: -moz-linear-gradient(left, rgba(182,230,237,1) 0%, rgba(113,227,239,1) 32%, rgba(34,213,226,1) 54%, rgba(182,230,237,1) 100%);
 background: -webkit-gradient(left top, right top, color-stop(0%, rgba(182,230,237,1)), color-stop(32%, rgba(113,227,239,1)), color-stop(54%, rgba(34,213,226,1)), color-stop(100%, rgba(182,230,237,1)));
 background: -webkit-linear-gradient(left, rgba(182,230,237,1) 0%, rgba(113,227,239,1) 32%, rgba(34,213,226,1) 54%, rgba(182,230,237,1) 100%);
 background: -o-linear-gradient(left, rgba(182,230,237,1) 0%, rgba(113,227,239,1) 32%, rgba(34,213,226,1) 54%, rgba(182,230,237,1) 100%);
 background: -ms-linear-gradient(left, rgba(182,230,237,1) 0%, rgba(113,227,239,1) 32%, rgba(34,213,226,1) 54%, rgba(182,230,237,1) 100%);
 background: linear-gradient(to right, rgba(182,230,237,1) 0%, rgba(113,227,239,1) 32%, rgba(34,213,226,1) 54%, rgba(182,230,237,1) 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6e6ed', endColorstr='#b6e6ed', GradientType=1 );
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b6e6ed', endColorstr='#b6e6ed', GradientType=1 );*/
 }
 h1{
   text-align: center;
@@ -38,7 +38,7 @@ p{
   -moz-border-radius: 15px 15px 15px 15px;
   -webkit-border-radius: 15px 15px 15px 15px;
   border: 7px double #16e01d;
-  background-color: #00FF7F;
+  background-color: #00FF7F;*/
 }
 .post {
 	-moz-box-shadow:inset 0px -3px 7px 0px #29bbff;
