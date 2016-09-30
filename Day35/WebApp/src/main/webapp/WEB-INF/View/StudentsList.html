@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Consuming REST web service in JavaScript</title>
+	<link src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://code.jquery.com/jquery-3.1.0.min.js"></script>
+	<script type="text/javascript">
+
+		$(document).ready(function() {
+
+			$.ajax({
+        		url: "http://localhost:8080/student"
+    		}).then(function(data) {
+    			var br = document.createElement("br");
+    			for(var i = 0; i < data.length; i++) {
+    				var whatever = $("<tr>");
+    				whatever.append($("<td>" + data[i]["id"] + "</td>"))
+    				whatever.append($("<td>" + data[i]["first_name"] + "</td>"))
+    				whatever.append($("<td>" + data[i]["last_name"] + "</td>"))
+    				whatever.append($("<td>" + data[i]["sat"] + "</td>"))
+    				whatever.append($("<td>" + data[i]["gpa"] + "</td>"))
+
+//    			$("#container1").text( $("#container1").text() + data[i]["id"] + " ");
+  //  			$("#container2").text( $("#container2").text() + data[i]["first_name"] + " ");
+    //			$("#container3").text( $("#container3").text() + data[i]["last_name"] + " ");
+    	//		$("#container4").text( $("#container4").text() + data[i]["sat"] + " ");
+    		//	$("#container5").text( $("#container5").text() + data[i]["gpa"] + " ");
+    		
+				whatever.append($("</tr>"));
+ 				$("#std").append(whatever);
+
+  		      }
+    			console.log(data);
+    		})
+		});		
+		
+		 <!-- end ready -->
+		
+
+	</script>
+</head>
+<body>
+<table>
+<thead>
+<th>Id</th>
+<th>First Name</th>
+<th>Last Name</th>
+<th>SAT</th>
+<th>GPA</th>
+</thead>
+<tbody id="std">
+</tbody>
+</table>
+</body>
+</html>
