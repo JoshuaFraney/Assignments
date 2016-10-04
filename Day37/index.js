@@ -2,9 +2,19 @@
 // 	.controller("AppCtrl", [function() {
 // 		var self = this; 
 // 		self.about = "SAT Score";
-	angular.module("AppMod", [])
-	.controller("AppCtrl", ["$http", function($http) {
-		var self = this;
+
+	// angular.module("AppMod", [])
+	// .controller("AppCtrl", ["$http", function($http) {
+	// 	var self = this;
+
+		var app = angular.module('plunker', []);
+
+		app.controller('MainCtrl', function($scope) {
+ 			 $scope.student = {first_name:"Doug", last_name:"Dumas", gpa:3.1, sat:1350};
+			})
+			.directive('childScope', function() {
+			  return { scope: true, restrict:'AE' }
+			});
 		
 		self.hide = function(id) {
 			console.log("Param of hide is [" + id + "]");
@@ -37,16 +47,23 @@
 				student.vis = false;
 		}};
 
-		$http.get("http://localhost:8080/student")
-			.then(function(resp) {
-				self.students = resp.data;
-				for(var s of self.students) {
-					s.vis = true;
-				}
-				}, function(err) {
+		// $http.get("http://localhost:8080/student")
+		// 	.then(function(resp) {
+		// 		self.students = resp.data;
+		// 		var fName = "<tr><td>"
+		// 		var lName = ""
+		// 		var gpa = ""
+		// 		var sat = ""
+				
+		// 		}
+		// 		}, function(err) {
 
-				});
-	
+		// 		});
+
+		// self.students = [
+		// {first_name:"Doug", last_name:"Dumas", gpa:3.1, sat:1350, vis:true}
+		// ];
+
 		// self.students = [
 		// {id:100, firstname:"Eric", lastname:"Ephram", gpa:3.0, sat:1200, majorid:1, vis:true},
 		// {id:110, firstname:"Greg", lastname:"Gould", gpa:2.5, sat:1100, majorid:null, vis:true},
@@ -60,4 +77,4 @@
 		// {id:190, firstname:"Brian", lastname:"Biggs", gpa:2.3, sat:950, majorid:null, vis:true},
 		// ];
 
-	}]); // END OF CONTROLLER
+	 // END OF CONTROLLER
